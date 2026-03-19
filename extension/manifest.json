@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn Message Capture",
+  "version": "1.0.0",
+  "description": "Captures LinkedIn messages and sends them to n8n webhook for HubSpot logging",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.n8n.cloud/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.linkedin.com/messaging/*"
+      ],
+      "js": ["config.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
